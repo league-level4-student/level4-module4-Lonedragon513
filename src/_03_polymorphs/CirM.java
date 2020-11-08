@@ -4,15 +4,16 @@ package _03_polymorphs;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class BluePolymorph extends Polymorph{
+public class CirM extends Polymorph{
 
-	BluePolymorph(int x, int y) {
+	CirM(int x, int y, int width, int height) {
 		super(x, y);
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.blue);
+		g.setColor(Color.green);
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 	}
+	
 }

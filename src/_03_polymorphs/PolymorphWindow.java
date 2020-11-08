@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,24 +15,30 @@ public class PolymorphWindow extends JPanel implements ActionListener{
     public static final int WIDTH = 900;
     public static final int HEIGHT = 600;
     
-    private JFrame window;
+    private JFrame w;
     private Timer timer;
     
-    Polymorph bluePoly;
+    ArrayList<Polymorph> poly = new ArrayList<Polymorph>();
     
     public static void main(String[] args) {
    	 new PolymorphWindow().buildWindow();
     }
     
     public void buildWindow(){
-   	 window = new JFrame("IT'S MORPHIN' TIME!");
-   	 window.add(this);
-   	 window.getContentPane().setPreferredSize(new Dimension(500, 500));
-   	 window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   	 window.pack();
-   	 window.setVisible(true);
+   	 w = new JFrame("poly");
+   	 w.add(this);
+   	 w.getContentPane().setPreferredSize(new Dimension(500, 500));
+   	 w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   	 w.pack();
+   	 w.setVisible(true);
    	 
-   	 bluePoly = new BluePolymorph(50, 50);
+   	poly.add(new BluePolymorph(50, 50));
+   	poly.add(new RedMorph(100, 50 ));
+   	poly.add(new MovingMorph(50,250));
+   	poly.add(new CirM(250,250, 50,50));
+   	poly.add(new mouse(100,100, 50,50));
+   	poly.add(new Image(200,400, 50,50));
+   	poly.add(new Message(200,300, 50, 50));
    	 
    	 timer = new Timer(1000 / 30, this);
    	 timer.start();
@@ -43,13 +50,19 @@ public class PolymorphWindow extends JPanel implements ActionListener{
    	 g.fillRect(0, 0, 500, 500);
    	
    	 //draw polymorph
-   	 bluePoly.draw(g);
+   	 for (int i = 0; i < poly.size(); i++) {
+   		poly.get(i).draw(g);
+	 }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+     System.out.println("yes");
    	 repaint();
-   	 bluePoly.update();
+   	 for (int j = 0; j < poly.size(); j++) {
+   		poly.get(j).update();
+	 }
    	 
     }
+
 }
