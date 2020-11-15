@@ -23,6 +23,6 @@ public class Image extends Polymorph{
 
 	@Override
 	public void draw(Graphics g) {
-		g.fillRect(getX(), getY(), getWidth(), getHeight());
+		g.drawImage(img, getX(), getY(), getWidth(), getHeight(), null);
 	}
 }

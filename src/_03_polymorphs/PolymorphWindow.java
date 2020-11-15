@@ -46,7 +46,7 @@ public class PolymorphWindow extends JPanel implements ActionListener{
     
     public void paintComponent(Graphics g){
     //draw background
-   	 g.setColor(Color.LIGHT_GRAY);
+   	 g.setColor(Color.GRAY);
    	 g.fillRect(0, 0, 500, 500);
    	
    	 //draw polymorph
